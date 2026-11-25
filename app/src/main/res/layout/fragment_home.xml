@@ -106,6 +106,15 @@
                 android:layout_marginTop="10dp" />
         </LinearLayout>
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/onglets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/fond"
+            app:tabIndicatorColor="@color/indigo"
+            app:tabSelectedTextColor="@color/indigo"
+            app:tabTextColor="@color/texte2" />
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -118,6 +127,27 @@
                 android:clipToPadding="false"
                 android:paddingTop="8dp"
                 android:paddingBottom="100dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/liste_ventes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingTop="8dp"
+                android:paddingBottom="100dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/vide_ventes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="32dp"
+                android:tag="t:vide_ventes_jour"
+                android:textColor="@color/texte2"
+                android:textSize="15sp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/vide"

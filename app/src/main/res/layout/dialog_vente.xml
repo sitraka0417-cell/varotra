@@ -12,6 +12,27 @@
         android:paddingTop="12dp"
         android:paddingEnd="24dp">
 
+        <LinearLayout
+            android:id="@+id/d_entana_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:tag="t:vente_entana"
+                android:textColor="@color/texte2"
+                android:textSize="13sp" />
+
+            <Spinner
+                android:id="@+id/d_entana"
+                android:layout_width="match_parent"
+                android:layout_height="52dp" />
+        </LinearLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"

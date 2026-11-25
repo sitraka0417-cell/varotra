@@ -230,3 +230,10 @@ pin_oublie_message = Tsy azo averina ny kaody. Raha tohizana dia hovafana ny ang
 bio_titre = Varotra
 bio_sous_titre = Ampiasao ny rantsan-tanana hanokafana
 bio_utiliser_pin = Ampiasao ny kaody PIN
+
+# ----- Fivarotana isan'andro (pejy Andro) -----
+tab_entana = Entana
+tab_ventes_jour = Fivarotana
+vente_entana = Entana hivarotana
+vide_ventes_jour = Tsy mbola misy varotra amin'ity andro ity.\nTsindrio ny « Hivarotra » isaky ny misy mividy.
+toast_aucun_entana = Mbola tsy misy entana amin'ity andro ity. Manaova « Fividianana vaovao » aloha.

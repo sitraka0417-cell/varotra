@@ -57,6 +57,7 @@ public class TatitraFragment extends Fragment {
             i.putExtra(Intent.EXTRA_TEXT, Utils.texteBilan(libellePeriode, bilanTotal));
             startActivity(Intent.createChooser(i, T.t("partage_choix")));
         });
+        rafraichir();
         return racine;
     }
 

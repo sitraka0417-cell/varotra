@@ -4,18 +4,21 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.Calendar;
 import java.util.Collections;
@@ -26,8 +29,9 @@ public class LotActivity extends BaseActivity implements AchatAdapter.Ecouteur, 
     private Lot lot;
     private AchatAdapter achatAdapter;
     private VenteAdapter venteAdapter;
-    private RecyclerView rvAchats, rvVentes;
-    private TextView titre, sousTitre, vide, infoPrix;
+    private ViewPager2 pager;
+    private PageAdapter pageAdapter;
+    private TextView titre, sousTitre, infoPrix;
     private ExtendedFloatingActionButton fab;
     private TabLayout onglets;
     private View kpi;
@@ -46,35 +50,22 @@ public class LotActivity extends BaseActivity implements AchatAdapter.Ecouteur, 
 
         titre = findViewById(R.id.titre);
         sousTitre = findViewById(R.id.sous_titre);
-        vide = findViewById(R.id.vide);
         infoPrix = findViewById(R.id.info_prix);
         fab = findViewById(R.id.fab);
         onglets = findViewById(R.id.onglets);
         kpi = findViewById(R.id.kpi);
-        rvAchats = findViewById(R.id.liste_achats);
-        rvVentes = findViewById(R.id.liste_ventes);
+        pager = findViewById(R.id.pager);
 
-        rvAchats.setLayoutManager(new LinearLayoutManager(this));
-        rvVentes.setLayoutManager(new LinearLayoutManager(this));
         achatAdapter = new AchatAdapter(lot.achats, this);
         venteAdapter = new VenteAdapter(lot.ventes, this);
-        rvAchats.setAdapter(achatAdapter);
-        rvVentes.setAdapter(venteAdapter);
-
-        onglets.addTab(onglets.newTab().setText(T.t("onglet_achats")));
-        onglets.addTab(onglets.newTab().setText(T.t("onglet_ventes")));
-        onglets.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        pageAdapter = new PageAdapter();
+        pager.setAdapter(pageAdapter);
+        new TabLayoutMediator(onglets, pager, (tab, pos) ->
+                tab.setText(T.t(pos == 0 ? "onglet_achats" : "onglet_ventes"))).attach();
+        pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
+            public void onPageSelected(int position) {
                 afficherOnglet();
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
             }
         });
 
@@ -82,7 +73,7 @@ public class LotActivity extends BaseActivity implements AchatAdapter.Ecouteur, 
         findViewById(R.id.btn_menu).setOnClickListener(this::menu);
         infoPrix.setOnClickListener(v -> Dialogues.produit(this, lot, this::rafraichir));
         fab.setOnClickListener(v -> {
-            if (onglets.getSelectedTabPosition() == 0) {
+            if (ongletAchats()) {
                 Dialogues.achat(this, lot, null, this::rafraichir);
             } else {
                 Dialogues.vente(this, lot, null, this::rafraichir);
@@ -91,34 +82,62 @@ public class LotActivity extends BaseActivity implements AchatAdapter.Ecouteur, 
 
         // Ouvre directement l'onglet demandé (ex. après la création du lot : Fivarotana)
         int tab = getIntent().getIntExtra("onglet", 0);
-        TabLayout.Tab t = onglets.getTabAt(tab);
-        if (t != null) t.select();
+        pager.setCurrentItem(tab == 1 ? 1 : 0, false);
         afficherOnglet();
         rafraichir();
     }
 
     private boolean ongletAchats() {
-        return onglets.getSelectedTabPosition() == 0;
+        return pager.getCurrentItem() == 0;
     }
 
     private void afficherOnglet() {
-        boolean achats = ongletAchats();
-        rvAchats.setVisibility(achats ? View.VISIBLE : View.GONE);
-        rvVentes.setVisibility(achats ? View.GONE : View.VISIBLE);
-        fab.setText(achats ? T.t("fab_achat") : T.t("fab_vente"));
-        majVide();
+        fab.setText(ongletAchats() ? T.t("fab_achat") : T.t("fab_vente"));
     }
 
-    private void majVide() {
-        boolean achats = ongletAchats();
-        int n = achats ? lot.achats.size() : lot.ventes.size();
-        vide.setText(achats ? T.t("vide_achats") : T.t("vide_ventes"));
-        vide.setVisibility(n == 0 ? View.VISIBLE : View.GONE);
+    /** Deux pages que l'on peut glisser : 0 = Fividianana, 1 = Fivarotana. */
+    private class PageAdapter extends RecyclerView.Adapter<PageAdapter.VH> {
+        @Override
+        public int getItemCount() {
+            return 2;
+        }
+
+        @Override
+        public int getItemViewType(int position) {
+            return position;
+        }
+
+        @NonNull
+        @Override
+        public VH onCreateViewHolder(@NonNull ViewGroup parent, int type) {
+            View v = getLayoutInflater().inflate(R.layout.page_liste, parent, false);
+            RecyclerView rv = v.findViewById(R.id.rv);
+            rv.setLayoutManager(new LinearLayoutManager(LotActivity.this));
+            rv.setAdapter(type == 0 ? achatAdapter : venteAdapter);
+            return new VH(v);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull VH h, int position) {
+            int n = position == 0 ? lot.achats.size() : lot.ventes.size();
+            h.vide.setText(T.t(position == 0 ? "vide_achats" : "vide_ventes"));
+            h.vide.setVisibility(n == 0 ? View.VISIBLE : View.GONE);
+        }
+
+        class VH extends RecyclerView.ViewHolder {
+            final TextView vide;
+
+            VH(View v) {
+                super(v);
+                vide = v.findViewById(R.id.vide);
+            }
+        }
     }
 
     private void rafraichir() {
         achatAdapter.notifyDataSetChanged();
         venteAdapter.notifyDataSetChanged();
+        pageAdapter.notifyDataSetChanged();
         titre.setText(lot.titre());
         sousTitre.setText(Utils.dateLongue(lot.date));
         infoPrix.setText(lot.prixVente > 0
@@ -135,7 +154,6 @@ public class LotActivity extends BaseActivity implements AchatAdapter.Ecouteur, 
             sb.append(T.t("sisa", Utils.qte(Math.max(0, lot.nbPrepares - lot.nbVendus()))));
         }
         Kpi.revient(kpi, sb.toString());
-        majVide();
     }
 
     // ----- Achats -----

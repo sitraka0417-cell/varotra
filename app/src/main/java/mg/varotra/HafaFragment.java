@@ -113,6 +113,7 @@ public class HafaFragment extends Fragment {
         } catch (Exception ignored) {
         }
         ((TextView) r.findViewById(R.id.version)).setText(T.t("hafa_version", version));
+        majSecurite();
         return r;
     }
 

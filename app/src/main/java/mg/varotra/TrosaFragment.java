@@ -43,6 +43,7 @@ public class TrosaFragment extends Fragment {
             }
         });
         rv.setAdapter(adapter);
+        rafraichir();
         return racine;
     }
 

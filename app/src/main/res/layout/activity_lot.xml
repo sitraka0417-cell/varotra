@@ -101,38 +101,11 @@
             app:tabSelectedTextColor="@color/indigo"
             app:tabTextColor="@color/texte2" />
 
-        <FrameLayout
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/liste_achats"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:paddingTop="4dp"
-                android:paddingBottom="100dp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/liste_ventes"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:paddingTop="4dp"
-                android:paddingBottom="100dp"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/vide"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:padding="32dp"
-                android:textColor="@color/texte2"
-                android:textSize="15sp" />
-        </FrameLayout>
+            android:layout_weight="1" />
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton

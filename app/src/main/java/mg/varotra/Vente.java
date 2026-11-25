@@ -22,6 +22,8 @@ public class Vente {
     public boolean manuel = false;
     public double paye = 0;     // argent déjà reçu (= somme des paiements)
     public List<Paiement> paiements = new ArrayList<>();
+    /** Nom du produit (affichage seulement, non sauvegardé). */
+    public transient String entana = "";
 
     private void recalculer() {
         double t = 0;

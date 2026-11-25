@@ -44,6 +44,7 @@ public class VenteAdapter extends RecyclerView.Adapter<VenteAdapter.VH> {
         h.client.setText(x.nomClient());
         String detail = T.t("vente_detail", Utils.qte(x.qte), Utils.argent(x.pu));
         if (x.remise() > 0.5) detail += " • " + T.t("vente_remise_court", Utils.argent(x.remise()));
+        if (x.entana != null && !x.entana.isEmpty()) detail = x.entana + " • " + detail;
         h.detail.setText(detail);
         h.total.setText(Utils.argent(x.total));
 

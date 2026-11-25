@@ -5,6 +5,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
@@ -161,7 +162,14 @@ public class Dialogues {
     // =====================================================================
     //  VENTE
     // =====================================================================
-    public static void vente(final Context c, final Lot lot, final Vente existant, final Runnable apres) {
+    public static void vente(Context c, Lot lot, Vente existant, Runnable apres) {
+        vente(c, lot, null, existant, apres);
+    }
+
+    /** Si « choix » n'est pas vide, un sélecteur d'entana apparaît en haut du formulaire. */
+    public static void vente(final Context c, final Lot lotInit, final List<Lot> choix, final Vente existant,
+                             final Runnable apres) {
+        final Lot[] cur = {lotInit != null ? lotInit : choix.get(0)};
         View v = LayoutInflater.from(c).inflate(R.layout.dialog_vente, null);
         T.habiller(v);
         final AutoCompleteTextView client = v.findViewById(R.id.d_client);
@@ -226,8 +234,8 @@ public class Dialogues {
             if (st == Vente.PARTIEL) paye.setText(Utils.nombre(existant.paye));
         } else {
             qte.setText("1");
-            pu.setText(lot.prixVente > 0 ? Utils.nombre(lot.prixVente) : "");
-            total.setText(lot.prixVente > 0 ? Utils.nombre(lot.prixVente) : "");
+            pu.setText(cur[0].prixVente > 0 ? Utils.nombre(cur[0].prixVente) : "");
+            total.setText(cur[0].prixVente > 0 ? Utils.nombre(cur[0].prixVente) : "");
             mode.check(R.id.c_paye);
         }
         bloque[0] = false;
@@ -251,6 +259,28 @@ public class Dialogues {
         });
         maj[0].run();
 
+        if (choix != null && !choix.isEmpty()) {
+            v.findViewById(R.id.d_entana_box).setVisibility(View.VISIBLE);
+            Spinner sp = v.findViewById(R.id.d_entana);
+            List<String> noms = new ArrayList<>();
+            for (Lot l : choix) noms.add(l.titre());
+            sp.setAdapter(new ArrayAdapter<>(c, android.R.layout.simple_spinner_dropdown_item, noms));
+            sp.setSelection(Math.max(0, choix.indexOf(cur[0])));
+            sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                    cur[0] = choix.get(pos);
+                    if (existant == null) {
+                        pu.setText(cur[0].prixVente > 0 ? Utils.nombre(cur[0].prixVente) : "");
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                }
+            });
+        }
+
         MaterialAlertDialogBuilder b = new MaterialAlertDialogBuilder(c)
                 .setTitle(existant == null ? T.t("vente_titre_ajout") : T.t("vente_titre_modif"))
                 .setView(v)
@@ -258,7 +288,7 @@ public class Dialogues {
                 .setNegativeButton(T.t("btn_annuler"), null);
         final AlertDialog d = b.create();
         d.setOnShowListener(x -> d.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(bt -> {
-            if (enregistrerVente(c, lot, existant, client, qte, pu, total, paye, mode)) {
+            if (enregistrerVente(c, cur[0], existant, client, qte, pu, total, paye, mode)) {
                 d.dismiss();
                 if (apres != null) apres.run();
             }
