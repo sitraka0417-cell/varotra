@@ -1,0 +1,15 @@
+<resources>
+    <color name="indigo">#4F46E5</color>
+    <color name="indigo_fonce">#312E81</color>
+    <color name="indigo_clair">#E0E7FF</color>
+    <color name="violet">#7C3AED</color>
+    <color name="fond">#F4F6FB</color>
+    <color name="texte">#111827</color>
+    <color name="texte2">#6B7280</color>
+    <color name="vert">#059669</color>
+    <color name="vert_clair">#D1FAE5</color>
+    <color name="rouge">#E11D48</color>
+    <color name="rouge_clair">#FFE4E6</color>
+    <color name="ambre">#B45309</color>
+    <color name="ambre_clair">#FEF3C7</color>
+</resources>

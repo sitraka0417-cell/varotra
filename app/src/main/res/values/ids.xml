@@ -1,0 +1,6 @@
+<resources>
+    <item name="nav_jour" type="id" />
+    <item name="nav_tatitra" type="id" />
+    <item name="nav_trosa" type="id" />
+    <item name="nav_hafa" type="id" />
+</resources>

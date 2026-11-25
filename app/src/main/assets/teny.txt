@@ -1,0 +1,232 @@
+# ============================================================================
+#  TENY.TXT  —  ny teny rehetra ampiasain'ny application (azonao ovaina daholo)
+# ----------------------------------------------------------------------------
+#  Fomba fanoratana :   anarana = teny
+#   - Aza ovaina ny ANARANA (ny ankavia ny "="), ny TENY ihany (ankavanana) no ovaina.
+#   - {0} {1} {2} ... dia toerana hisehoan'ny isa/anarana avy amin'ny application. Tazony.
+#   - \n dia midina andalana.
+#   - Ny andalana manomboka amin'ny # dia fanamarihana fotsiny.
+#   - Ny lisitra (jours, mois, unites...) dia misaraka amin'ny virgule (,).
+# ============================================================================
+
+# ----- Ankapobeny -----
+devise = Ar
+client_anonyme = Mpividy tsy fantatra
+lot_sans_nom = Entana tsy misy anarana
+
+# ----- Bokotra ankapobeny -----
+btn_ajouter = Ampiana
+btn_ajouter_suivant = Ampiana + manaraka
+btn_enregistrer = Tehirizo
+btn_annuler = Aoka ihany
+btn_annuler_action = Averina
+btn_supprimer = Fafana
+btn_valider = Ekena
+btn_remplacer = Soloina
+btn_payer = Handoa
+btn_aujourdhui = Androany
+
+# ----- Famaritana ho an'ny mpampiasa tsy mahita (accessibilité) -----
+cd_menu = Menio
+cd_retour = Miverina
+cd_precedent = Teo aloha
+cd_suivant = Manaraka
+cd_supprimer = Fafana
+
+# ----- Menio ambany -----
+nav_jour = Andro
+nav_tatitra = Tatitra
+nav_trosa = Trosa
+nav_hafa = Hafa
+
+# ----- Anarana andro sy volana (manomboka Alatsinainy / Janoary) -----
+jours = Alatsinainy,Talata,Alarobia,Alakamisy,Zoma,Sabotsy,Alahady
+mois = Janoary,Febroary,Martsa,Aprily,Mey,Jona,Jolay,Aogositra,Septambra,Oktobra,Novambra,Desambra
+
+# ----- Isa (KPI) hita eny ambony -----
+kpi_mason = Masonkarena
+kpi_ventes = Vola azo
+kpi_benef = Tombombarotra
+kpi_encaisse = Efa voaray
+kpi_trosa = Trosa
+kpi_nb = Isan'ny lafo
+
+# ----- Pejy fandraisana (Andro) -----
+accueil_titre = Varotra
+accueil_sous_titre = Fandrindrana ny varotra isan'andro
+fab_nouveau = Fividianana vaovao
+vide_jour = Tsy mbola misy entana amin'ity andro ity.\nTsindrio ny bokotra « Fividianana vaovao » raha hanomboka.
+lot_detail = Lafo: {0}  •  Masonkarena: {1}
+lot_trosa = Trosa: {0}
+
+# ----- Fividianana vaovao (fangaro rehetra) -----
+nouveau_titre = Fividianana vaovao
+nouveau_sous_titre = Soraty ny fangaro hovidiana rehetra
+nouveau_fangaro = Fangaro hovidiana
+nouveau_copier = Alaina ny teo aloha
+nouveau_ajouter_ligne = Hanampy fangaro
+nouveau_enregistrer = Tehirizo
+produit_nom = Anaran'ny entana (ohatra: Sandwich)
+produit_prix = Vidin'ny iray amin'ny varotra
+produit_prepares = Isa vita (tsy voatery)
+produit_titre = Hanova ny entana
+produit_suggestions = Sandwich,Mofo gasy,Mofo sakay,Voanjobory nendasina,Menakely
+toast_aucun_precedent = Tsy mbola misy fividianana teo aloha azo alaina.
+toast_copie_ok = Voadika ny fangaro {0} teo aloha.
+toast_corriger = Ahitsio aloha ny fampidirana misy diso.
+toast_lot_cree = Voatahiry ny fividianana.
+
+# ----- Fangaro (fividianana) -----
+achat_nom = Anaran'ny fangaro
+achat_qte = Isany
+achat_qte_court = Isany
+achat_prix = Vidin'ny iray
+achat_prix_court = Vidiny
+achat_total = Totaliny: {0}
+achat_detail = {0} {1} × {2}
+achat_titre_ajout = Hanampy fangaro
+achat_titre_modif = Hanova ny fangaro
+achat_suggestions = Lafarinina,Siramamy,Sira,Menaka,Atody,Voanjo,Ketchup,Mayonnaise,Salady,Voatabia,Tongolo,Hena,Lasary
+unites = isa,kg,g,L,mL,fonosana,paoketra,tavoahangy,vata,sachet
+toast_achat_ajoute = Fangaro voaray. Manaraka...
+snack_achat_supprime = Voafafa ny fangaro
+erreur_nom_achat = Soraty ny anaran'ny fangaro
+erreur_prix = Soraty ny vidiny marina
+erreur_qte = Tsy maintsy lehibe kokoa noho 0 ny habetsaka
+
+# ----- Pejy entana (Lot) -----
+onglet_achats = Fividianana
+onglet_ventes = Fivarotana
+fab_achat = Hanampy fangaro
+fab_vente = Hivarotra
+vide_achats = Tsy mbola misy fangaro voasoratra.\nTsindrio ny bokotra eto ambany.
+vide_ventes = Tsy mbola misy varotra voasoratra.\nTsindrio ny « Hivarotra » isaky ny misy mividy.
+info_prix = Vidiny: {0} / iray  ✎
+info_prix_vide = Mbola tsy voafaritra ny vidin'ny iray  ✎
+revient = Vidin'ny fanaovana iray: {0}
+sisa = Sisa: {0}
+menu_modifier_produit = Hanova ny entana
+menu_dupliquer = Adika amin'ny andro hafa
+menu_partager = Zarao ny tatitra
+menu_supprimer_produit = Fafana ny entana
+supprimer_produit_titre = Fafana ny entana ?
+supprimer_produit_message = Ho voafafa tanteraka ny « {0} » miaraka amin'ny fividianana sy ny varotra rehetra ao aminy.
+toast_produit_supprime = Voafafa ny entana
+toast_duplique = Voadika ho an'ny {0} (fangaro fotsiny, tsy misy varotra).
+
+# ----- Fivarotana -----
+vente_titre_ajout = Varotra vaovao
+vente_titre_modif = Hanova ny varotra
+vente_client = Anaran'ny mpividy (tsy voatery)
+vente_qte = Isa novidiana
+vente_pu = Vidin'ny iray
+vente_total = Totalin'ny vidiny (azo ovaina)
+vente_mode = Fomba fandoavana
+vente_paye = Vola efa voaray
+mode_paye = Voaloa daholo
+mode_partiel = Voaloa amin'ny ampahany
+mode_trosa = Trosa
+vente_reduction = Fihenam-bidy: {0}
+vente_majoration = Fanampiana amin'ny vidiny: {0}
+vente_reste = Mbola tsy voaloa: {0}
+vente_detail = {0} × {1}
+vente_remise_court = fihenam-bidy {0}
+erreur_nom_produit = Soraty ny anaran'ny entana
+statut_paye = Voaloa
+statut_trosa = Trosa {0}
+statut_partiel = Voaray {0} • Trosa {1}
+snack_vente_supprimee = Voafafa ny varotra
+toast_vente_ok = Voasoratra ny varotra
+toast_stock_depasse = Tandremo: mihoatra ny {0} vita ny isa lafo.
+erreur_total = Soraty ny totalin'ny vidiny marina
+erreur_paye_partiel = Ny vola voaray dia tsy maintsy lehibe kokoa noho 0 ary ambany noho ny totaliny
+
+# ----- Fandoavana trosa -----
+paiement_titre = Fandoavana trosa
+paiement_resume = {0} : trosa {1}
+paiement_montant = Vola voaray izao
+paiement_tout = Voaloa daholo
+toast_paiement_ok = Voasoratra ny fandoavana
+erreur_montant = Soraty ny vola marina
+
+# ----- Pejy Trosa -----
+trosa_titre = Trosa
+trosa_total_label = Trosa rehetra tsy mbola voaloa
+trosa_nb = {0} varotra mbola tsy voaloa
+trosa_detail = {0} • {1} • {2} isa = {3}
+trosa_reste = Mbola: {0}
+vide_trosa = Tsy misy trosa mijanona. Tsara izany ! 🎉
+
+# ----- Tatitra -----
+tatitra_titre = Tatitra
+seg_jour = Andro
+seg_mois = Volana
+seg_an = Taona
+tatitra_graphique = Tombombarotra
+tatitra_vide = Tsy misy varotra na fividianana amin'ity vanim-potoana ity.
+tatitra_par_produit = Isaky ny entana
+tatitra_par_jour = Isan'andro
+tatitra_par_mois = Isam-bolana
+tatitra_ligne_detail = Masonkarena {0} • Vola azo {1} • Trosa {2}
+tatitra_partager = Zarao ny tatitra
+partage_titre = 📊 Tatitra : {0}
+partage_choix = Zarao amin'ny...
+
+# ----- Hafa (fitahirizana sns.) -----
+hafa_titre = Hafa
+hafa_sous_titre = Fitahirizana sy fanamafisana
+hafa_backup_titre = Fitahirizana (backup)
+hafa_backup_aide = Mitahiry rakitra iray misy ny angona rehetra (fividianana, varotra, trosa). Ampiasao rehefa hanova findainao.
+hafa_export = Hanao backup
+hafa_import = Hamerina backup
+backup_nom_fichier = varotra-backup.json
+toast_export_ok = Voatahiry ny backup.
+toast_export_echec = Tsy nahomby ny fitahirizana.
+toast_import_ok = Voaverina ny angona.
+toast_import_echec = Tsy nety namaky ny rakitra backup.
+import_titre = Hamerina ny backup ?
+import_message = Ho soloina ny angona rehetra misy ankehitriny amin'ny an'ilay backup.
+hafa_danger_titre = Zavatra mampidi-doza
+hafa_danger_aide = Mamafa ny angona rehetra amin'ity findainao ity. Tsy azo averina raha tsy nanao backup.
+hafa_vider = Fafana ny angona rehetra
+vider_titre = Fafana ny angona rehetra ?
+vider_message = Ho voafafa tanteraka ny fividianana, varotra ary trosa rehetra. Tsy azo averina izany.
+toast_vide = Voafafa ny angona rehetra
+hafa_version = Varotra • version {0}
+
+# ----- Tantaran'ny fandoavana -----
+btn_histo = Tantara
+btn_fermer = Akatony
+histo_titre = Tantaran'ny fandoavana
+histo_total = Totaliny: {0}
+histo_vide = Mbola tsy misy vola voaray.
+histo_voaray = Efa voaray: {0}
+histo_reste = Mbola tsy voaloa: {0}
+
+# ----- Kaody PIN sy rantsan-tanana -----
+hafa_pin_titre = Fiarovana
+hafa_pin_actif = Voaaro amin'ny kaody PIN ny application.
+hafa_pin_inactif = Mbola tsy misy kaody PIN. Mahita ny angona rehetra ny olona mandray ny findainao.
+hafa_pin_definir = Hametraka kaody PIN
+hafa_pin_changer = Hanova ny kaody PIN
+hafa_pin_retirer = Hanala ny kaody PIN
+hafa_bio = Ampiasaina ny rantsan-tanana
+toast_bio_indisponible = Tsy misy rantsan-tanana voasoratra na tsy mandeha amin'ity findainao ity.
+toast_pin_defini = Voatahiry ny kaody PIN
+toast_pin_retire = Voafafa ny kaody PIN
+pin_titre_verifier = Soraty ny kaody PIN
+pin_msg_verifier = Ampidiro ny kaody 4 isa
+pin_titre_ancien = Kaody PIN ankehitriny
+pin_msg_ancien = Soraty aloha ny kaody ampiasaina izao
+pin_titre_creer = Kaody PIN vaovao
+pin_msg_creer = Mifidiana kaody 4 isa
+pin_titre_confirmer = Avereno ny kaody
+pin_msg_confirmer = Soraty indray ny kaody mba hanamafisana
+pin_incorrect = Diso ny kaody PIN
+pin_different = Tsy mitovy ny kaody roa. Andramo indray.
+pin_oublie = Adino ny kaody PIN ?
+pin_oublie_titre = Adino ny kaody PIN ?
+pin_oublie_message = Tsy azo averina ny kaody. Raha tohizana dia hovafana ny angona rehetra (fividianana, varotra, trosa) vao afaka mampiasa ny application indray. Raha manana backup ianao dia azonao averina avy eo.
+bio_titre = Varotra
+bio_sous_titre = Ampiasao ny rantsan-tanana hanokafana
+bio_utiliser_pin = Ampiasao ny kaody PIN

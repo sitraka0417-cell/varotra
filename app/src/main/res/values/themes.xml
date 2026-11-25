@@ -1,0 +1,16 @@
+<resources>
+    <style name="Theme.Varotra" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/indigo</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorPrimaryContainer">@color/indigo_clair</item>
+        <item name="colorOnPrimaryContainer">@color/indigo_fonce</item>
+        <item name="colorSecondaryContainer">@color/indigo_clair</item>
+        <item name="colorOnSecondaryContainer">@color/indigo_fonce</item>
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorOnSurface">@color/texte</item>
+        <item name="android:statusBarColor">@color/indigo_fonce</item>
+        <item name="android:navigationBarColor">#FFFFFF</item>
+        <item name="android:windowBackground">@color/fond</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>
